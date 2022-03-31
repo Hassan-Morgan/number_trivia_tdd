@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:retrofit/http.dart';
+import 'package:retrofit/retrofit.dart';
+import 'package:retrofit/http.dart' as http;
 
 import '../../../models/number_trivia_model.dart';
 import 'end_points.dart';
@@ -12,8 +13,14 @@ abstract class RemoteNumberRetrofit {
       _RemoteNumberRetrofit;
 
   @GET(randomNumberTriviaPath)
+  @http.Headers({
+    'Content-Type': 'application/json',
+  })
   Future<NumberTriviaModel> getRandomTrivia();
 
   @GET(concreteNumberTriviaPath)
+  @http.Headers({
+    'Content-Type': 'application/json',
+  })
   Future<NumberTriviaModel> getConcreteTrivia(@Path('number') int number);
 }

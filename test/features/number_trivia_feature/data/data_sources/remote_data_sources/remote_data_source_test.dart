@@ -32,7 +32,6 @@ void main() {
       verify(numberRetrofit.getRandomTrivia());
       expect(result, testModel);
     });
-
     test('should throw ServerException when call getRandomTrivia', () async {
       when(numberRetrofit.getRandomTrivia()).thenThrow(Error());
       final result = remoteDataSource.getRandomNumberTrivia;

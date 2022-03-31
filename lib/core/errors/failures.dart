@@ -7,6 +7,14 @@ abstract class Failure extends Equatable {
 
 class ServerFailure extends Failure {}
 
-class CashFailure extends Failure{}
+class CashFailure extends Failure {}
 
-class NetworkFailure extends Failure{}
+
+class InputFailure extends Equatable {
+  final String failureMessage;
+
+  const InputFailure(this.failureMessage);
+
+  @override
+  List<Object?> get props => [failureMessage];
+}

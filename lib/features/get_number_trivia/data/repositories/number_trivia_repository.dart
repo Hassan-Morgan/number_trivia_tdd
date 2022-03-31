@@ -40,7 +40,7 @@ class NumberTriviaDataRepository implements NumberTriviaDomainRepository {
     if (await networkInfo.getCurrentConnectionState) {
       try {
         NumberTriviaModel resultModel = await getRandomOrConcreteNumber();
-        NumberTriviaEntity resultEntity = resultModel.toEntity(resultModel);
+        NumberTriviaEntity resultEntity = resultModel.toEntity();
         await localNumberTriviaDataSource.setNumberTrivia(resultModel);
         return Right(resultEntity);
       } on ServerException {
@@ -50,7 +50,7 @@ class NumberTriviaDataRepository implements NumberTriviaDomainRepository {
       try {
         NumberTriviaModel resultModel =
             await localNumberTriviaDataSource.getNumberTrivia();
-        NumberTriviaEntity resultEntity = resultModel.toEntity(resultModel);
+        NumberTriviaEntity resultEntity = resultModel.toEntity();
         return Right(resultEntity);
       } on CashException {
         return Left(CashFailure());

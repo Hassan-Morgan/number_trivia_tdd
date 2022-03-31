@@ -12,7 +12,7 @@ void main() {
       text: 'test text', number: 1, found: true, type: 'trivia');
 
   test('the Extension toEntity should return number trivia entity', () {
-    final testResult = testModel.toEntity(testModel);
+    final testResult = testModel.toEntity();
     expect(testResult, isA<NumberTriviaEntity>());
   });
 
